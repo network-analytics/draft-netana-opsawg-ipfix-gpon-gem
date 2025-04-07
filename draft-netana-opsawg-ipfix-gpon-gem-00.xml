@@ -24,19 +24,33 @@
       <address>
         <postal>
           <street>Binzring 17</street>
-
           <city>Zurich</city>
-
           <code>8045</code>
-
           <country>Switzerland</country>
         </postal>
-
         <email>thomas.graf@swisscom.com</email>
       </address>
     </author>
 
-    <date day="28" month="March" year="2025"/>
+    <author initials="H." surname="Zheng" fullname="Haomian Zheng">
+      <organization showOnFrontPage="true">Huawei Technologies</organization>
+      <address>
+        <postal>
+          <street>H1, Huawei Xiliu Beipo Village, Songshan Lake</street>
+          <city>Dongguan</city>
+          <region>Guangdong</region>
+          <code>523808</code>
+          <country>China</country>
+        </postal>
+        <email>zhenghaomian@huawei.com</email>
+      </address>
+    </author>
+
+    <date day="07" month="April" year="2025"/>
+
+    <area>Operations and Management</area>
+
+    <workgroup>OPSAWG</workgroup>
 
     <abstract>
       <t>This document introduces new IP Flow Information Export (IPFIX)
