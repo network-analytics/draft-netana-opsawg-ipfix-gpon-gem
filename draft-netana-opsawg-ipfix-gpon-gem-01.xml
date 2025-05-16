@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
+<?rfc toc="yes"?>
+<?rfc tocompact="yes"?>
+<?rfc tocdepth="3"?>
+<?rfc tocindent="yes"?>
+<?rfc symrefs="yes"?>
+<?rfc sortrefs="yes"?>
+<?rfc comments="yes"?>
+<?rfc inline="yes"?>
+<?rfc compact="yes"?>
+<?rfc subcompact="no"?>
+<rfc category="std" docName="draft-netana-opsawg-ipfix-gpon-gem-01"
+     ipr="trust200902">
+  <front>
+    <title
+    abbrev="IPFIX Export G-PON GEM">Export of Gigabit Passive Optical
+		Network Encapsulation Mode in IP Flow Information Export
+		(IPFIX)</title>
+
+    <author fullname="Thomas Graf" initials="T" surname="Graf">
+      <organization>Swisscom</organization>
+
+      <address>
+        <postal>
+          <street>Binzring 17</street>
+          <city>Zurich</city>
+          <code>8045</code>
+          <country>Switzerland</country>
+        </postal>
+        <email>thomas.graf@swisscom.com</email>
+      </address>
+    </author>
+
+    <author initials="H." surname="Zheng" fullname="Haomian Zheng">
+      <organization showOnFrontPage="true">Huawei Technologies</organization>
+      <address>
+        <postal>
+          <street>H1, Huawei Xiliu Beipo Village, Songshan Lake</street>
+          <city>Dongguan</city>
+          <region>Guangdong</region>
+          <code>523808</code>
+          <country>China</country>
+        </postal>
+        <email>zhenghaomian@huawei.com</email>
+      </address>
+    </author>
+
+    <date day="16" month="May" year="2025"/>
+
+    <area>Operations and Management</area>
+
+    <workgroup>OPSAWG</workgroup>
+
+    <abstract>
+      <t>This document introduces new IP Flow Information Export (IPFIX)
+      Information Elements to identify a set of G-PON Encapsulation
+			Method entities in the Passive Optical Transport of
+			the Optical Distribution Network.</t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="Introduction" title="Introduction">
+      <t>The G-PON Encapsulation Method (GEM) data plane header defined
+			in Section 8.3.1 of <xref target="itu-g984-3"/> facilitates the
+			framing, error control, payload type identification and payload
+			separation in the Optical Distribution Network. It is being used 
+			in the Optical Distribution Network between the Optical Line
+			Termination (OLT) at the network operator and the Optical Network
+			Unit (ONU), Optical Network Terminal (ONT) at the end user in the
+			passive optical transport within the broadband access domain.</t>
+
+			<t>IPFIX is widely applied in the broadband access domain to gain
+			visibility into the forwarding and data plane. However, that
+			visibility is today constraint to the ethernet, IP and application
+			transport properties of the data plane.</t>
+			
+      <t>This document specifies two IPFIX Information Elements (IEs)
+			to facilitate visibility in the GEM data plane.</t>
+
+      <t>Figure 1 shows the GEM frame, the GEM header and its
+			properties.</t>
+
+      <t><figure>
+         <artwork><![CDATA[
+						
+                            GEM Frame
+     |<------------------------------------------------------>|
+     |                                                        |
+     +--------------+-----------------------------------------+
+     |  GEM Header  |              GEM Payload                |
+     +--------------+-----------------------------------------+
+    /               |                                                    
+   /                 --------------\                     
+  /                                 --------------\                                  
+ /                                                 -----------\
+v                                                              v   
++----------------+----------------+---------+------------------+         
+| PLI            | Port-ID        | PTI     |  HEC             |         
+| (12-bits)      | (12-bits)      | (3-bits)|  (13-bits)       |         
++----------------+----------------+---------+------------------+      
+
+  Figure 1: G.984.3 GEM header and frame structure
+      ]]></artwork>
+      </figure></t>
+
+      <t>These IEs are used to export the GEM Port-ID and PTI to enable
+			the distinction between user service and user and OAM 
+			application frames.</t>
+
+      <t>Some examples are provided in Appendix A.</t>
+    </section>
+
+    <section anchor="Anotation" title="Terminology">
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+      "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+      "OPTIONAL" in this document are to be interpreted as described in BCP 14
+      <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when,
+      they appear in all capitals, as shown here.</t>
+
+      <t>This document makes use of the terms defined in <xref
+      target="RFC7011"/>, <xref target="itu-g984-1"/> and <xref
+      target="itu-g984-3"/>.</t>
+
+      <t>The following terms are used as defined in <xref
+      target="RFC7011"/>:</t>
+
+      <t><list style="symbols">
+          <t>IPFIX</t>
+
+          <t>IPFIX Information Elements</t>
+
+          <t>Template</t>
+
+          <t>Template Record</t>
+
+          <t>Options Template</t>
+
+          <t>Options Template Record</t>
+
+          <t>Data Record</t>
+
+          <t>Data Set</t>
+        </list></t>
+
+      <t>The following terms are used as defined in <xref
+      target="itu-g984-1"/>:</t>
+
+      <t><list style="symbols">
+          <t>Optical Access Network (OAN)</t>
+
+          <t>Optical Distribution Network (ODN)</t>
+
+          <t>Optical Line Termination (OLT)</t>
+
+          <t>Optical Network Termination (ONT)</t>
+
+          <t>Optical Network Unit (ONU)</t>
+        </list></t>
+
+      <t>The following terms are used as defined in <xref
+      target="itu-g984-3"/>:</t>
+
+      <t><list style="symbols">
+          <t>G-PON Encapsulation Method (GEM)</t>
+
+          <t>GEM Port</t>
+
+          <t>Gigabit-capable Passive Optical Network (G-PON)</t>
+        </list></t>
+    </section>
+
+    <section anchor="IE" title="New IPFIX G-PON GEM Elements">
+      <t>This section specifies the new IPFIX G-PON GEM IEs.<list
+          style="hanging">
+          <t hangText="gponGemPti"><vspace blankLines="0"/> 3-bit
+					GEM PTI content type field defined in Section 8.3.1 of <xref
+					target="itu-g984-3"/>. The values are encoded in the first
+					3 bits of the IE.</t>
+
+          <t hangText="gponGemPortId"><vspace blankLines="0"/> 12-bit
+					GEM Port-ID field defined in Section 8.3.1 of <xref
+					target="itu-g984-3"/>.</t>
+        </list></t>
+    </section>
+
+    <section anchor="Sample-Use-Cases" title="Sample Use Cases">
+      <t>The IPFIX IEs gponGemPti (TBD1) or gponGemPortId (TBD2),
+			sourceMacAddress (56), destinationMacAddress (80),
+			ingressInterface (10), egressInterface (14) and
+			forwardingStatus (89)<xref target="RFC5102"/> <xref
+			target="RFC7270"/> <xref target="IANA-IPFIX"/>, and some existing
+			counter informations <xref target="IANA-IPFIX"/> providing answers
+			to the following questions (amongst others):</t>
+
+      <t><list style="symbols">
+          <t>How many user or OAM frames are forwarded or dropped to
+					which ONU on which egress interface and GEM Port-ID?</t>
+
+          <t>If dropped, for which reasons?</t>
+        </list></t>
+
+      <t>The received ONU frames on an OLT are mapped and forwarded
+			depending on GEM Port-ID to a dot1qVlanId (243) and dot1qPriority
+			(244) upstream to the provider network.</t>
+    </section>
+
+    <section anchor="IANA" title="IANA Considerations">
+      <t>Note to the RFC-Editor:</t>
+
+      <t><list style="symbols">
+          <t>Please replace TBD1 - TBD2 with the values allocated by IANA</t>
+
+          <t>Please replace the [RFC-to-be] with the RFC number assigned to
+          this document</t>
+        </list></t>
+
+      <section anchor="sec-new-ies"
+               title="New IPFIX G-PON GEM Information Elements">
+        <t>This document requests IANA to add new IEs (<xref
+        target="sec-new-ies"/>) to the "IPFIX Information Elements" registry
+        <xref target="RFC7012"/> available at <xref target="IANA-IPFIX"/>.</t>
+
+        <t>Table 1 lists the new G-PON GEM IEs:</t>
+
+        <t><figure>
+            <artwork><![CDATA[
+
+     +-------+--------------------------------+
+     |Element|              Name              |
+     |   ID  |                                |
+     +-------+--------------------------------+
+     | TBD1  | gponGemPti                     |
+     |       |                                |
+     +-------+--------------------------------+
+     | TBD2  | gponGemPortId                  |
+     |       |                                |
+     +-------+--------------------------------+
+
+  Table 1: New G-PON GEM IEs in the "IPFIX Information Elements" Registry
+       ]]></artwork>
+          </figure></t>
+
+        <section anchor="IANAgponGemPti" title="gponGemPti">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>gponGemPti</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD1</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The 3-bit GEM PTI content type field defined in Section
+						8.3.1 of <xref target="itu-g984-3"/>.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned8</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>flags</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 8.3.1 of <xref target="itu-g984-3"/> for the
+						content type list. The values are encoded in the first
+					  3 bits of the IE.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+
+        <section anchor="IANAgponGemPortId" title="gponGemPortId">
+          <dl>
+            <dt>Name:</dt>
+
+            <dd>gponGemPortId</dd>
+          </dl>
+
+          <dl>
+            <dt>ElementID:</dt>
+
+            <dd>TBD2</dd>
+          </dl>
+
+          <dl>
+            <dt>Description:</dt>
+
+            <dd>The 12-bit GEM Port-ID field defined in Section 8.3.1 of
+						<xref target="itu-g984-3"/>.</dd>
+          </dl>
+
+          <dl>
+            <dt>Abstract Data Type:</dt>
+
+            <dd>unsigned16</dd>
+          </dl>
+
+          <dl>
+            <dt>Data Type Semantics:</dt>
+
+            <dd>identifier</dd>
+          </dl>
+
+          <dl>
+            <dt>Additional Information:</dt>
+
+            <dd>See Section 8.3.1 of <xref target="itu-g984-3"/> for the
+						content type list.</dd>
+          </dl>
+
+          <dl>
+            <dt>Reference:</dt>
+
+            <dd>[RFC-to-be]</dd>
+          </dl>
+        </section>
+      </section>
+    </section>
+
+    <section anchor="Acknowledgements" title="Acknowledgements">
+      <t>The authors would like to thank Paul Aitken for their review
+			and valuable comments, and xxx for the implementation and
+			validation.
+			</t>
+    </section>
+
+    <section anchor="Implementation" title="Implementation Status">
+      <t>Note to the RFC-Editor: Please remove this section before
+      publishing.</t>
+
+      <section anchor="Huawei" title="Huawei MA5800T-X17">
+        <t>Huawei plans to implement the following IEs as part of a
+				production implementation in the VRP based MA5800T-X17 OLT
+				platform:</t>
+
+        <t><list style="symbols">
+            <t>gponGemPortId</t>
+          </list></t>
+
+        <t>The implementation will be validated in an upcoming IETF
+				hackathon.</t>
+      </section>
+    </section>
+
+    <section anchor="Security" title="Security Considerations">
+      <t>There exists no extra security considerations regarding
+			allocation of these new IPFIX IEs compared to <xref
+			target="RFC7012"/>.</t>
+
+      <t>The IEs described in this document export provider plane data
+			metrics on how frames are being forwarded within an Optical Access
+			Network. Applications and operators using the IEs described in
+			this document must evaluate the sensitivity of this information in
+			their implementation context, and apply the data-at-rest storage
+			guidance in Section 11.8 of <xref target="RFC7011"/> as
+			appropriate.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+      <?rfc include='reference.RFC.2119'?>
+
+      <?rfc include='reference.RFC.7011'?>
+
+      <?rfc include='reference.RFC.7012'?>
+
+      <?rfc include='reference.RFC.8174'?>
+
+      <reference anchor="itu-g984-1"
+                 target="https://www.itu.int/rec/T-REC-G.984.1">
+        <front>
+          <title>G.984.1</title>
+          <author/>
+          <date month="March" year="2008"/>
+        </front>
+        <refcontent>ITU-T, International Telecommunication Union</refcontent>
+      </reference>
+
+      <reference anchor="itu-g984-3"
+                 target="https://www.itu.int/rec/T-REC-G.984.3">
+        <front>
+          <title>G.984.3</title>
+          <author/>
+          <date month="January" year="2024"/>
+        </front>
+        <refcontent>ITU-T, International Telecommunication Union</refcontent>
+      </reference>
+
+    </references>
+
+    <references title="Informative References">
+      <?rfc include='reference.RFC.5102'?>
+
+      <?rfc include='reference.RFC.7270'?>
+
+      <reference anchor="IANA-IPFIX"
+                 target="https://www.iana.org/assignments/ipfix/ipfix.xhtml">
+        <front>
+          <title>IANA, "IP Flow Information Export (IPFIX) Entities"</title>
+          <author/>
+          <date/>
+        </front>
+      </reference>
+    </references>
+
+    <section anchor="Encoding-Example" title="IPFIX Encoding Examples">
+      <t>TBD.</t>
+    </section>
+  </back>
+</rfc>
