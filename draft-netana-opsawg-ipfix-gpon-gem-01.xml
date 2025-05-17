@@ -46,7 +46,7 @@
       </address>
     </author>
 
-    <date day="16" month="May" year="2025"/>
+    <date day="17" month="May" year="2025"/>
 
     <area>Operations and Management</area>
 
@@ -176,8 +176,8 @@ v                                                              v
           style="hanging">
           <t hangText="gponGemPti"><vspace blankLines="0"/> 3-bit
 					GEM PTI content type field defined in Section 8.3.1 of <xref
-					target="itu-g984-3"/>. The values are encoded in the first
-					3 bits of the IE.</t>
+					target="itu-g984-3"/>. The values are encoded in the 3 least
+					significant bits of the IE.</t>
 
           <t hangText="gponGemPortId"><vspace blankLines="0"/> 12-bit
 					GEM Port-ID field defined in Section 8.3.1 of <xref
@@ -275,11 +275,17 @@ v                                                              v
           </dl>
 
           <dl>
+            <dt>Range:</dt>
+
+            <dd>The valid range is 0-7.</dd>
+          </dl>
+
+          <dl>
             <dt>Additional Information:</dt>
 
             <dd>See Section 8.3.1 of <xref target="itu-g984-3"/> for the
-						content type list. The values are encoded in the first
-					  3 bits of the IE.</dd>
+						content type list. The values are encoded in the 3 least
+						significant bits of the IE.</dd>
           </dl>
 
           <dl>
