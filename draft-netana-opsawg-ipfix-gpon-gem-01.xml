@@ -113,11 +113,12 @@ v                                                              v
     </section>
 
     <section anchor="Anotation" title="Terminology">
-      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-      "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-      "OPTIONAL" in this document are to be interpreted as described in BCP 14
-      <xref target="RFC2119"/> <xref target="RFC8174"/> when, and only when,
-      they appear in all capitals, as shown here.</t>
+      <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+			"SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", 
+			"NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to
+			be interpreted as described in BCP 14 <xref target="RFC2119"/>
+			<xref target="RFC8174"/> when, and only when, they appear in all
+			capitals, as shown here.</t>
 
       <t>This document makes use of the terms defined in <xref
       target="RFC7011"/>, <xref target="itu-g984-1"/> and <xref
@@ -210,17 +211,19 @@ v                                                              v
       <t>Note to the RFC-Editor:</t>
 
       <t><list style="symbols">
-          <t>Please replace TBD1 - TBD2 with the values allocated by IANA</t>
+          <t>Please replace TBD1 - TBD2 with the values allocated by
+					IANA</t>
 
-          <t>Please replace the [RFC-to-be] with the RFC number assigned to
-          this document</t>
+          <t>Please replace the [RFC-to-be] with the RFC number assigned
+					to this document</t>
         </list></t>
 
       <section anchor="sec-new-ies"
                title="New IPFIX G-PON GEM Information Elements">
         <t>This document requests IANA to add new IEs (<xref
-        target="sec-new-ies"/>) to the "IPFIX Information Elements" registry
-        <xref target="RFC7012"/> available at <xref target="IANA-IPFIX"/>.</t>
+        target="sec-new-ies"/>) to the "IPFIX Information Elements"
+				registry <xref target="RFC7012"/> available at <xref
+				target="IANA-IPFIX"/>.</t>
 
         <t>Table 1 lists the new G-PON GEM IEs:</t>
 
@@ -238,7 +241,7 @@ v                                                              v
      |       |                                |
      +-------+--------------------------------+
 
-  Table 1: New G-PON GEM IEs in the "IPFIX Information Elements" Registry
+Table 1: New G-PON GEM IEs in the "IPFIX Information Elements" Registry
        ]]></artwork>
           </figure></t>
 
@@ -258,8 +261,9 @@ v                                                              v
           <dl>
             <dt>Description:</dt>
 
-            <dd>The 3-bit GEM PTI content type field defined in Section
-						8.3.1 of <xref target="itu-g984-3"/>.</dd>
+            <dd>Values for this Information Element are listed in the
+						"G-PON Encapsulation Method PTI" subregistry, see <xref
+						target="IANA-IPFIX"/>.</dd>
           </dl>
 
           <dl>
@@ -283,9 +287,14 @@ v                                                              v
           <dl>
             <dt>Additional Information:</dt>
 
-            <dd>See Section 8.3.1 of <xref target="itu-g984-3"/> for the
-						content type list. The values are encoded in the 3 least
-						significant bits of the IE.</dd>
+            <dd>See the assigned types in [IPFIX G-PON Encapsulation
+						Method PTI Subregistry]. The values are encoded in the 3
+						least significant bits of the IE.</dd>
+
+            <dt>Note to IANA:</dt>
+
+            <dd>Please replace [IPFIX G-PON Encapsulation Method PTI
+						Subregistry] with the URL of the IANA subregistry.</dd>						
           </dl>
 
           <dl>
@@ -328,17 +337,70 @@ v                                                              v
           </dl>
 
           <dl>
-            <dt>Additional Information:</dt>
-
-            <dd>See Section 8.3.1 of <xref target="itu-g984-3"/> for the
-						content type list.</dd>
-          </dl>
-
-          <dl>
             <dt>Reference:</dt>
 
             <dd>[RFC-to-be]</dd>
           </dl>
+
+          <section anchor="IANAgponGemPortIdSubregistry"
+               title="G-PON Encapsulation Method PTI Subregistry">
+            <t>This document requests IANA to create a new subregistry
+						called "IPFIX G-PON Encapsulation Method PTI" under the
+						"IPFIX Information Elements" registry <xref
+						target="RFC7012"/> available at <xref
+						target="IANA-IPFIX"/>.</t>
+
+            <t>The allocation policy of this new subregistry is Expert
+					  Review (Section 4.5 of <xref target="RFC8126"/>).</t>
+
+            <t>The designated experts for this registry should be
+						familiar with the  G-PON Encapsulation Method. The
+						guidelines that are being followed by the designated experts
+						for the IPFIX registry should be followed for this
+						subregistry. In particular, criteria that should be applied
+						by the designated experts include determining whether the
+						proposed registration came from an appropriate ITU-T party,
+						whether it duplicates existing entries and the
+						registration description is clear and fits the purpose of
+						this registry. Within the review period, the designated
+						experts will either approve or deny the registration
+						request, communicating this decision to IANA. Denials should
+						include an explanation and, if applicable, suggestions as to
+						how to make the request successful.</t>
+
+            <t>Initial values in the registry are defined in Table 2
+						and reflect the 3-bit GEM PTI content type field defined in
+						Section 8.3.1 of <xref target="itu-g984-3"/>.</t>
+
+            <t><figure>
+              <artwork><![CDATA[
+
++-------+----------------------------------------------------------+
+| Value |       GEM PTI Content Type Meaning         | Additional  |
+|       |                                            | Information |
++-------+----------------------------------------------------------+
+|  000  | User data fragment, not the end of a frame | [RFC-to-be] |
++-------+----------------------------------------------------------+
+|  001  | User data fragment, end of a frame         | [RFC-to-be] |
++-------+----------------------------------------------------------+
+|  010  | Reserved                                   | [RFC-to-be] |
++-------+----------------------------------------------------------+
+|  011  | Reserved                                   | [RFC-to-be] |
++-------+----------------------------------------------------------+
+|  100  | GEM OAM, not the end of a frame            | [RFC-to-be] |
++-------+----------------------------------------------------------+
+|  101  | GEM OAM, end of a frame                    | [RFC-to-be] |
++-------+----------------------------------------------------------+
+|  110  | Reserved                                   | [RFC-to-be] |
++-------+----------------------------------------------------------+
+|  111  | Reserved                                   | [RFC-to-be] |
++-------+----------------------------------------------------------+
+
+        Table 2: "IPFIX G-PON Encapsulation Method PTI" Subregistry
+
+              ]]></artwork>
+            </figure></t>
+          </section>
         </section>
       </section>
     </section>
@@ -390,6 +452,8 @@ v                                                              v
       <?rfc include='reference.RFC.7011'?>
 
       <?rfc include='reference.RFC.7012'?>
+
+      <?rfc include='reference.RFC.8126'?>
 
       <?rfc include='reference.RFC.8174'?>
 

@@ -68,15 +68,15 @@ Table of Contents
      5.1.  New IPFIX G-PON GEM Information Elements  . . . . . . . .   5
        5.1.1.  gponGemPti  . . . . . . . . . . . . . . . . . . . . .   5
        5.1.2.  gponGemPortId . . . . . . . . . . . . . . . . . . . .   6
-   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   6
-   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .   6
-     7.1.  Huawei MA5800T-X17  . . . . . . . . . . . . . . . . . . .   6
-   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   7
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   7
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .   7
-   Appendix A.  IPFIX Encoding Examples  . . . . . . . . . . . . . .   8
-   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   8
+   6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   7
+   7.  Implementation Status . . . . . . . . . . . . . . . . . . . .   7
+     7.1.  Huawei MA5800T-X17  . . . . . . . . . . . . . . . . . . .   7
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+   Appendix A.  IPFIX Encoding Examples  . . . . . . . . . . . . . .   9
+   Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
 1.  Introduction
 
@@ -249,18 +249,18 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
    Table 1 lists the new G-PON GEM IEs:
 
-     +-------+--------------------------------+
-     |Element|              Name              |
-     |   ID  |                                |
-     +-------+--------------------------------+
-     | TBD1  | gponGemPti                     |
-     |       |                                |
-     +-------+--------------------------------+
-     | TBD2  | gponGemPortId                  |
-     |       |                                |
-     +-------+--------------------------------+
+      +-------+--------------------------------+
+      |Element|              Name              |
+      |   ID  |                                |
+      +-------+--------------------------------+
+      | TBD1  | gponGemPti                     |
+      |       |                                |
+      +-------+--------------------------------+
+      | TBD2  | gponGemPortId                  |
+      |       |                                |
+      +-------+--------------------------------+
 
-  Table 1: New G-PON GEM IEs in the "IPFIX Information Elements" Registry
+ Table 1: New G-PON GEM IEs in the "IPFIX Information Elements" Registry
 
 5.1.1.  gponGemPti
 
@@ -268,8 +268,8 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
    ElementID:  TBD1
 
-   Description:  The 3-bit GEM PTI content type field defined in
-      Section 8.3.1 of [itu-g984-3].
+   Description:  Values for this Information Element are listed in the
+      "G-PON Encapsulation Method PTI" subregistry, see [IANA-IPFIX].
 
    Abstract Data Type:  unsigned8
 
@@ -284,9 +284,12 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
    Range:  The valid range is 0-7.
 
-   Additional Information:  See Section 8.3.1 of [itu-g984-3] for the
-      content type list.  The values are encoded in the 3 least
-      significant bits of the IE.
+   Additional Information:  See the assigned types in [IPFIX G-PON
+      Encapsulation Method PTI Subregistry].  The values are encoded in
+      the 3 least significant bits of the IE.
+
+   Note to IANA:  Please replace [IPFIX G-PON Encapsulation Method PTI
+      Subregistry] with the URL of the IANA subregistry.
 
    Reference:  [RFC-to-be]
 
@@ -303,10 +306,65 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
    Data Type Semantics:  identifier
 
-   Additional Information:  See Section 8.3.1 of [itu-g984-3] for the
-      content type list.
-
    Reference:  [RFC-to-be]
+
+5.1.2.1.  G-PON Encapsulation Method PTI Subregistry
+
+   This document requests IANA to create a new subregistry called "IPFIX
+   G-PON Encapsulation Method PTI" under the "IPFIX Information
+   Elements" registry [RFC7012] available at [IANA-IPFIX].
+
+   The allocation policy of this new subregistry is Expert Review
+   (Section 4.5 of [RFC8126]).
+
+   The designated experts for this registry should be familiar with the
+   G-PON Encapsulation Method.  The guidelines that are being followed
+   by the designated experts for the IPFIX registry should be followed
+   for this subregistry.  In particular, criteria that should be applied
+   by the designated experts include determining whether the proposed
+   registration came from an appropriate ITU-T party, whether it
+   duplicates existing entries and the registration description is clear
+   and fits the purpose of this registry.  Within the review period, the
+   designated experts will either approve or deny the registration
+   request, communicating this decision to IANA.  Denials should include
+   an explanation and, if applicable, suggestions as to how to make the
+   request successful.
+
+
+
+
+Graf & Zheng            Expires 18 November 2025                [Page 6]
+
+Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+
+
+   Initial values in the registry are defined in Table 2 and reflect the
+   3-bit GEM PTI content type field defined in Section 8.3.1 of
+   [itu-g984-3].
+
+   +-------+----------------------------------------------------------+
+   | Value |       GEM PTI Content Type Meaning         | Additional  |
+   |       |                                            | Information |
+   +-------+----------------------------------------------------------+
+   |  000  | User data fragment, not the end of a frame | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+   |  001  | User data fragment, end of a frame         | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+   |  010  | Reserved                                   | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+   |  011  | Reserved                                   | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+   |  100  | GEM OAM, not the end of a frame            | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+   |  101  | GEM OAM, end of a frame                    | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+   |  110  | Reserved                                   | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+   |  111  | Reserved                                   | [RFC-to-be] |
+   +-------+----------------------------------------------------------+
+
+           Table 2: "IPFIX G-PON Encapsulation Method PTI" Subregistry
+
 
 6.  Acknowledgements
 
@@ -326,17 +384,20 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
    The implementation will be validated in an upcoming IETF hackathon.
 
+
+
+
+
+
+Graf & Zheng            Expires 18 November 2025                [Page 7]
+
+Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+
+
 8.  Security Considerations
 
    There exists no extra security considerations regarding allocation of
    these new IPFIX IEs compared to [RFC7012].
-
-
-
-Graf & Zheng            Expires 18 November 2025                [Page 6]
-
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
-
 
    The IEs described in this document export provider plane data metrics
    on how frames are being forwarded within an Optical Access Network.
@@ -373,26 +434,27 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
               DOI 10.17487/RFC7012, September 2013,
               <https://www.rfc-editor.org/info/rfc7012>.
 
+   [RFC8126]  Cotton, M., Leiba, B., and T. Narten, "Guidelines for
+              Writing an IANA Considerations Section in RFCs", BCP 26,
+              RFC 8126, DOI 10.17487/RFC8126, June 2017,
+              <https://www.rfc-editor.org/info/rfc8126>.
+
    [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+
+
+Graf & Zheng            Expires 18 November 2025                [Page 8]
+
+Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+
 
 9.2.  Informative References
 
    [IANA-IPFIX]
               "IANA, "IP Flow Information Export (IPFIX) Entities"",
               <https://www.iana.org/assignments/ipfix/ipfix.xhtml>.
-
-
-
-
-
-
-
-Graf & Zheng            Expires 18 November 2025                [Page 7]
-
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
-
 
    [RFC5102]  Quittek, J., Bryant, S., Claise, B., Aitken, P., and J.
               Meyer, "Information Model for IP Flow Information Export",
@@ -439,10 +501,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-Graf & Zheng            Expires 18 November 2025                [Page 8]
+Graf & Zheng            Expires 18 November 2025                [Page 9]
