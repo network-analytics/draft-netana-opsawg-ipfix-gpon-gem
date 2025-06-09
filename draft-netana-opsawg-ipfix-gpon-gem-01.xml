@@ -354,19 +354,18 @@ Table 1: New G-PON GEM IEs in the "IPFIX Information Elements" Registry
 					  Review (Section 4.5 of <xref target="RFC8126"/>).</t>
 
             <t>The designated experts for this registry should be
-						familiar with the  G-PON Encapsulation Method. The
+						familiar with the G-PON Encapsulation Method. The
 						guidelines that are being followed by the designated experts
 						for the IPFIX registry should be followed for this
 						subregistry. In particular, criteria that should be applied
-						by the designated experts include determining whether the
-						proposed registration came from an appropriate ITU-T party,
-						whether it duplicates existing entries and the
-						registration description is clear and fits the purpose of
-						this registry. Within the review period, the designated
-						experts will either approve or deny the registration
-						request, communicating this decision to IANA. Denials should
-						include an explanation and, if applicable, suggestions as to
-						how to make the request successful.</t>
+						by the designated experts include to monitor the G-PON
+						Encapsulation Method related activities at ITU-T and mirror
+						the GEM PTI content type fields into this registry. Hence,
+						keeping both registries in sync. Within the review period,
+						the designated experts will either approve or deny the
+						registration request, communicating this decision to IANA.
+						Denials should include an explanation and, if applicable,
+						suggestions as to how to make the request successful.</t>
 
             <t>Initial values in the registry are defined in Table 2
 						and reflect the 3-bit GEM PTI content type field defined in

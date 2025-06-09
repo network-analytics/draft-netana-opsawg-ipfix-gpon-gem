@@ -321,14 +321,14 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
    G-PON Encapsulation Method.  The guidelines that are being followed
    by the designated experts for the IPFIX registry should be followed
    for this subregistry.  In particular, criteria that should be applied
-   by the designated experts include determining whether the proposed
-   registration came from an appropriate ITU-T party, whether it
-   duplicates existing entries and the registration description is clear
-   and fits the purpose of this registry.  Within the review period, the
-   designated experts will either approve or deny the registration
-   request, communicating this decision to IANA.  Denials should include
-   an explanation and, if applicable, suggestions as to how to make the
-   request successful.
+   by the designated experts include to monitor the G-PON Encapsulation
+   Method related activities at ITU-T and mirror the GEM PTI content
+   type fields into this registry.  Hence, keeping both registries in
+   sync.  Within the review period, the designated experts will either
+   approve or deny the registration request, communicating this decision
+   to IANA.  Denials should include an explanation and, if applicable,
+   suggestions as to how to make the request successful.
+
 
 
 
