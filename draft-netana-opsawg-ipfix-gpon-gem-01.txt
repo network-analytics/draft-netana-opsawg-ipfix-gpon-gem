@@ -5,8 +5,8 @@
 OPSAWG                                                           T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                                H. Zheng
-Expires: 18 November 2025                            Huawei Technologies
-                                                             17 May 2025
+Expires: 18 December 2025                            Huawei Technologies
+                                                            16 June 2025
 
 
 Export of Gigabit Passive Optical Network Encapsulation Mode in IP Flow
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 November 2025.
+   This Internet-Draft will expire on 18 December 2025.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Graf & Zheng            Expires 18 November 2025                [Page 1]
+Graf & Zheng            Expires 18 December 2025                [Page 1]
 
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
 
 
 Table of Contents
@@ -71,10 +71,10 @@ Table of Contents
    6.  Acknowledgements  . . . . . . . . . . . . . . . . . . . . . .   7
    7.  Implementation Status . . . . . . . . . . . . . . . . . . . .   7
      7.1.  Huawei MA5800T-X17  . . . . . . . . . . . . . . . . . . .   7
-   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   8
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .   7
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   8
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .   8
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .   9
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .   8
    Appendix A.  IPFIX Encoding Examples  . . . . . . . . . . . . . .   9
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   9
 
@@ -109,9 +109,9 @@ Table of Contents
 
 
 
-Graf & Zheng            Expires 18 November 2025                [Page 2]
+Graf & Zheng            Expires 18 December 2025                [Page 2]
 
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
 
 
                                GEM Frame
@@ -165,9 +165,9 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
 
 
-Graf & Zheng            Expires 18 November 2025                [Page 3]
+Graf & Zheng            Expires 18 December 2025                [Page 3]
 
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
 
 
    *  Data Record
@@ -221,9 +221,9 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
 
 
-Graf & Zheng            Expires 18 November 2025                [Page 4]
+Graf & Zheng            Expires 18 December 2025                [Page 4]
 
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
 
 
    *  If dropped, for which reasons?
@@ -277,9 +277,9 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
 
 
-Graf & Zheng            Expires 18 November 2025                [Page 5]
+Graf & Zheng            Expires 18 December 2025                [Page 5]
 
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
 
 
    Range:  The valid range is 0-7.
@@ -324,23 +324,19 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
    by the designated experts include to monitor the G-PON Encapsulation
    Method related activities at ITU-T and mirror the GEM PTI content
    type fields into this registry.  Hence, keeping both registries in
-   sync.  Within the review period, the designated experts will either
-   approve or deny the registration request, communicating this decision
-   to IANA.  Denials should include an explanation and, if applicable,
-   suggestions as to how to make the request successful.
-
-
-
-
-
-Graf & Zheng            Expires 18 November 2025                [Page 6]
-
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
-
+   sync.
 
    Initial values in the registry are defined in Table 2 and reflect the
    3-bit GEM PTI content type field defined in Section 8.3.1 of
    [itu-g984-3].
+
+
+
+
+Graf & Zheng            Expires 18 December 2025                [Page 6]
+
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
+
 
    +-------+----------------------------------------------------------+
    | Value |       GEM PTI Content Type Meaning         | Additional  |
@@ -384,20 +380,19 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
 
    The implementation will be validated in an upcoming IETF hackathon.
 
-
-
-
-
-
-Graf & Zheng            Expires 18 November 2025                [Page 7]
-
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
-
-
 8.  Security Considerations
 
    There exists no extra security considerations regarding allocation of
    these new IPFIX IEs compared to [RFC7012].
+
+
+
+
+
+Graf & Zheng            Expires 18 December 2025                [Page 7]
+
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
+
 
    The IEs described in this document export provider plane data metrics
    on how frames are being forwarded within an Optical Access Network.
@@ -443,14 +438,17 @@ Internet-Draft           IPFIX Export G-PON GEM                 May 2025
               2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
               May 2017, <https://www.rfc-editor.org/info/rfc8174>.
 
-
-
-Graf & Zheng            Expires 18 November 2025                [Page 8]
-
-Internet-Draft           IPFIX Export G-PON GEM                 May 2025
-
-
 9.2.  Informative References
+
+
+
+
+
+
+Graf & Zheng            Expires 18 December 2025                [Page 8]
+
+Internet-Draft           IPFIX Export G-PON GEM                June 2025
+
 
    [IANA-IPFIX]
               "IANA, "IP Flow Information Export (IPFIX) Entities"",
@@ -501,4 +499,6 @@ Authors' Addresses
 
 
 
-Graf & Zheng            Expires 18 November 2025                [Page 9]
+
+
+Graf & Zheng            Expires 18 December 2025                [Page 9]
