@@ -368,7 +368,7 @@ Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
 6.  Acknowledgements
 
-   The authors would like to thank Paul Aitken and André Nuno for their
+   The authors would like to thank Paul Aitken and Nuno André for their
    review and valuable comments, and xxx for the implementation and
    validation.
 
