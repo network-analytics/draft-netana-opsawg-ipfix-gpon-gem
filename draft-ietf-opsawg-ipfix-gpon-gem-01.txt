@@ -5,8 +5,8 @@
 OPSAWG                                                           T. Graf
 Internet-Draft                                                  Swisscom
 Intended status: Standards Track                                H. Zheng
-Expires: 16 March 2026                               Huawei Technologies
-                                                       12 September 2025
+Expires: 29 March 2026                               Huawei Technologies
+                                                       25 September 2025
 
 
 Export of Gigabit Passive Optical Network Encapsulation Mode in IP Flow
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 March 2026.
+   This Internet-Draft will expire on 29 March 2026.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 1]
+Graf & Zheng              Expires 29 March 2026                 [Page 1]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 2]
+Graf & Zheng              Expires 29 March 2026                 [Page 2]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -165,7 +165,7 @@ Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 3]
+Graf & Zheng              Expires 29 March 2026                 [Page 3]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -221,7 +221,7 @@ Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 4]
+Graf & Zheng              Expires 29 March 2026                 [Page 4]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -277,7 +277,7 @@ Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 5]
+Graf & Zheng              Expires 29 March 2026                 [Page 5]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -333,7 +333,7 @@ Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 6]
+Graf & Zheng              Expires 29 March 2026                 [Page 6]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -389,7 +389,7 @@ Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 7]
+Graf & Zheng              Expires 29 March 2026                 [Page 7]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -445,7 +445,7 @@ Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 8]
+Graf & Zheng              Expires 29 March 2026                 [Page 8]
 
 Internet-Draft           IPFIX Export G-PON GEM           September 2025
 
@@ -501,4 +501,4 @@ Authors' Addresses
 
 
 
-Graf & Zheng              Expires 16 March 2026                 [Page 9]
+Graf & Zheng              Expires 29 March 2026                 [Page 9]
